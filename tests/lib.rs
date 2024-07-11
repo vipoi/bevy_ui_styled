@@ -1,4 +1,7 @@
-use bevy::prelude::*;
+use bevy::{
+    color::palettes::css::{BLUE, RED},
+    prelude::*,
+};
 use bevy_ui_styled::styled;
 use bevy_ui_styled_macros::styled_bundle;
 
@@ -156,12 +159,12 @@ fn test_macro_bundle() {
         styled_bundle!("bg-red hover:bg-blue");
 
     assert_eq!(style, base_style.style);
-    assert_eq!(base_style.color, Some(Color::RED));
-    assert_eq!(bg_color.0, Color::RED);
+    assert_eq!(base_style.color, Some(Color::Srgba(RED)));
+    assert_eq!(bg_color.0, Color::Srgba(RED));
 
     assert_eq!(style, hovered_style.style);
-    assert_eq!(hovered_style.color, Some(Color::BLUE));
+    assert_eq!(hovered_style.color, Some(Color::Srgba(BLUE)));
 
     assert_eq!(style, pressed_style.style);
-    assert_eq!(pressed_style.color, Some(Color::RED));
+    assert_eq!(pressed_style.color, Some(Color::Srgba(RED)));
 }

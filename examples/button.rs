@@ -1,4 +1,4 @@
-use bevy::prelude::*;
+use bevy::{color::palettes::css::RED, prelude::*};
 use bevy_ui_styled::{styled, StyledPlugin};
 
 fn main() {
@@ -27,7 +27,7 @@ fn setup(mut commands: Commands) {
                         align_items: AlignItems::Center,
                         ..default()
                     },
-                    background_color: Color::RED.into(),
+                    background_color: Color::Srgba(RED).into(),
                     ..default()
                 })
                 .with_children(|parent| {
@@ -38,7 +38,7 @@ fn setup(mut commands: Commands) {
             commands
                 .spawn(ButtonBundle {
                     style: styled!("w-150 h-65 m-auto justify-center items-center"),
-                    background_color: Color::RED.into(),
+                    background_color: Color::Srgba(RED).into(),
                     ..default()
                 })
                 .with_children(|parent| {

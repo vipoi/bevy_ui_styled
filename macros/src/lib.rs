@@ -1,7 +1,10 @@
 mod quote_utils;
 
 use anyhow::Context;
-use bevy::prelude::*;
+use bevy::{
+    color::palettes::css::{BLUE, GREEN, RED},
+    prelude::*,
+};
 use proc_macro::TokenStream;
 use quote::{quote, TokenStreamExt};
 use quote_utils::{quote_color_rgba, quote_option, quote_style};
@@ -425,9 +428,9 @@ fn parse_frac(style: &str) -> anyhow::Result<f32> {
 fn parse_color_name(color: &str) -> Color {
     match color {
         color if color.starts_with("transparent") => Color::NONE,
-        color if color.starts_with("red") => Color::RED,
-        color if color.starts_with("green") => Color::GREEN,
-        color if color.starts_with("blue") => Color::BLUE,
+        color if color.starts_with("red") => Color::Srgba(RED),
+        color if color.starts_with("green") => Color::Srgba(GREEN),
+        color if color.starts_with("blue") => Color::Srgba(BLUE),
         _ => unimplemented!("Unknown colors: {color}"),
     }
 }

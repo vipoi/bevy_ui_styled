@@ -10,10 +10,10 @@ The basic idea is that each `Style` property has a simple short-hand value that 
 
 ## Example
 
-This is the button example in bevy 0.8
+This is the button example in bevy 0.14
 
 ```rust
-use bevy::prelude::*;
+use bevy::{color::palettes::css::RED, prelude::*};
 
 fn system(mut commands: Commands, asset_server: AssetServer) {
     commands
@@ -26,7 +26,7 @@ fn system(mut commands: Commands, asset_server: AssetServer) {
                 align_items: AlignItems::Center,
                 ..default()
             },
-            background_color: Color::RED.into(),
+            background_color: Color::Srgba(RED).into(),
             ..default()
         })
         .with_children(|parent| {
@@ -38,14 +38,14 @@ fn system(mut commands: Commands, asset_server: AssetServer) {
 The same example using bevy_ui_styled
 
 ```rust
-use bevy::prelude::*;
+use bevy::{color::palettes::css::RED, prelude::*};
 use bevy_ui_styled::styled;
 
 fn system(mut commands: Commands, asset_server: AssetServer) {
     commands
         .spawn(ButtonBundle {
             style: styled!("w-150 h-65 m-auto justify-center items-center"),
-            background_color: Color::RED.into(),
+            background_color: Color::Srgba(RED).into(),
             ..default()
         })
         .with_children(|parent| {
@@ -88,6 +88,7 @@ Sometimes, you want to change a property based on the state of the component. Th
 
 | bevy_ui_styled | bevy |
 | -------------- | ---- |
+| 0.5            | 0.14 |
 | 0.4            | 0.11 |
 | 0.3            | 0.10 |
 | 0.2            | 0.9  |

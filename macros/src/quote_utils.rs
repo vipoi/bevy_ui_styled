@@ -1,6 +1,7 @@
 use std::fmt::Debug;
 
 use bevy::{
+    color::ColorToComponents,
     prelude::Color,
     ui::{Overflow, Style, UiRect, Val},
 };
@@ -8,8 +9,8 @@ use proc_macro2::TokenStream;
 use quote::{quote, ToTokens};
 
 pub(crate) fn quote_color_rgba(color: Color) -> TokenStream {
-    let [r, g, b, a] = color.as_rgba_f32();
-    quote!(bevy::prelude::Color::rgba(#r, #g, #b, #a))
+    let [r, g, b, a] = color.to_srgba().to_f32_array();
+    quote!(bevy::prelude::Color::srgba(#r, #g, #b, #a))
 }
 
 pub(crate) fn quote_style(style: Style) -> TokenStream {
